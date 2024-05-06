@@ -1,0 +1,13 @@
+img{
+    width: 100%;
+}
+
+p.myself-p{
+    margin-block-start: 1rem !important;
+    margin-block-end: 1rem !important;
+    
+}
+
+.mar-bot{
+    margin-bottom: 28px !important;
+}
