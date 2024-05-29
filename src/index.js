@@ -1,15 +1,17 @@
-import React from 'react';
-import './index.css';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import "./index.css";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import TimeAgo from "javascript-time-ago";
+import en from 'javascript-time-ago/locale/en.json'
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+TimeAgo.addLocale(en)
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-    <App  />
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );

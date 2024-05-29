@@ -1,0 +1,88 @@
+.AdminForm{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom:10px ;
+}
+.heading h2{
+    font-size: 30px;
+    font-weight: 500;
+}
+.heading{
+    display: flex;
+    justify-content: center;
+    
+}
+.formContiner{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #fff;
+    padding: 38px 20px;
+}
+.FormSection{
+    /* width: 49%; */
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+    padding-left: 27px;
+    padding-bottom: 25px;
+    box-shadow: 0 4px 8px rgb(0 0 0 / 66%), 0 6px 20px rgb(0 0 0 / 32%);
+    border-radius: 15px;
+    max-height: 635px;
+}
+.FormContent{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 15px;
+}
+.FormContent h4{
+    font-size: 18px;
+    font-weight: 500;
+}
+.inputBox{
+    height: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 0 5px;
+    width: 95%;
+    background: #f1f1f1;
+}
+.textarea{
+    max-width: 98%;
+    min-height: 151px;
+    min-width: 95%;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 5px;
+    border-radius: 10px;
+    background: #f1f1f1;
+    word-wrap: break-word;
+}
+.error{
+    color: red;
+}
+
+.bttn{
+    width: 45%;
+    border-radius: 15px;
+    cursor: pointer;
+    padding: 10px 24px !important;
+}
+
+.buttons-submit{
+    display: flex;
+    gap: 30px;
+}
+
+.title-blog{
+    padding-top: 20px;
+}
+
+/* .title-preview{
+    padding-top: 20px;
+} */

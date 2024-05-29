@@ -32,3 +32,11 @@ img{
   .read_btn:hover {
     background-color: #ccc;
   }
+  .desc-marg{
+    margin-top: 0;
+    word-wrap: break-word;
+  }
+
+  .preview-ht{
+    min-height: 526px;
+  }

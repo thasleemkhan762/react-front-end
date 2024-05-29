@@ -1,55 +1,70 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../common/Header";
 import BlogCard from "../BlogMainCard/BlogCard";
 import MainSubSection from "../SideSections/MainSubSection";
 import Footer from "../Footer/Footer";
-import blogData from "../BlogMainCard/data/blogData";
+// import blogData from "../BlogMainCard/data/blogData";
+import axios from "axios";
 
 const MainLayout = () => {
   const blogsPerPage = 2;
   const [currentPage, setCurrentPage] = useState(1);
   const [blogs, setBlogs] = useState([]);
   const [popular, setPopular] = useState([]);
-  const [firstLoad, setFirstLoad] = useState(true); // State to track first load
-
 
   useEffect(() => {
-    setBlogs(blogData);
-    const popularBlogs = blogData.slice().reverse().slice(0, 4);
-    setPopular(popularBlogs);
-
-    // Set firstLoad to false after initial data load
-    setFirstLoad(false);
+    axios
+      .get("http://localhost:5000/api/blogs")
+      .then((response) => {
+        console.log("data:", response.data);
+        const blogs = response.data.slice().reverse();
+        setBlogs(blogs);
+        const popularBlogs = response.data.slice().reverse().slice(0, 4);
+        setPopular(popularBlogs);
+      })
+      .catch((error) => {
+        console.log("An error occurred:", error);
+      });
   }, []);
 
-  useEffect(() => {
-    // Scroll to top on page change, but only if not first load or reload
-    if (!firstLoad && window.scrollY > 0) {
-      window.scrollTo({ top: 182, behavior: 'smooth' });
-    }
-  }, [currentPage, firstLoad]);
-  
-
-  const  indexOfLastBlog = currentPage * blogsPerPage;
+  const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = blogs.slice(indexOfFirstBlog, indexOfLastBlog);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-  }
+  };
   return (
     <>
-      <Header />
+      <Header
+        name={"MY BLOG"}
+        title={"Welcome to the blog of "}
+        admin={"Thasleem"}
+      />
       <div className="w3-row">
-          <div className="w3-col l8">
-          <BlogCard blogs={currentBlogs} />
-          </div>
+        <div className="w3-col l8">
+          {currentBlogs.map((blog) => (
+            <BlogCard
+              key={blog._id}
+              id={blog._id}
+              image={blog.image}
+              heading={blog.heading}
+              title={blog.title}
+              createdAt={blog.createdAt}
+              description={blog.description}
+            />
+          ))}
+        </div>
 
-          <div className="w3-col l4">
-            <MainSubSection popularBlogs={popular} />
-          </div>
+        <div className="w3-col l4">
+          <MainSubSection popularBlogs={popular} />
+        </div>
       </div>
-      <Footer currentPage={currentPage} totalPages={Math.ceil(blogs.length / blogsPerPage)} onPageChange={handlePageChange}/>
+      <Footer
+        currentPage={currentPage}
+        totalPages={Math.ceil(blogs.length / blogsPerPage)}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 };
