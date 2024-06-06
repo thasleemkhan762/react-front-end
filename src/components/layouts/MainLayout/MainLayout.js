@@ -14,7 +14,7 @@ const MainLayout = () => {
 
   useEffect(() => {
     axios
-      .get("https://react-backend-blog.vercel.app/")
+      .get("http://localhost:5000/api/blogs")
       .then((response) => {
         console.log("data:", response.data);
         const blogs = response.data.slice().reverse();
