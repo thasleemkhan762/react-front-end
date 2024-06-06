@@ -34,6 +34,7 @@ const AdminForm = () => {
   };
 
   const formData = watch();
+  
   console.log(formData);
 
   return (
