@@ -14,7 +14,7 @@ const MainLayout = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/blogs")
+      .get("https://react-backend-blog-o8xo.onrender.com/api/blogs")
       .then((response) => {
         console.log("data:", response.data);
         const blogs = response.data.slice().reverse();
